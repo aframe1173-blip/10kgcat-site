@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10キロの猫 | 重みは、愛の大きさ。</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* --- 基本設定 --- */
+        :root {
+            --primary-color: #e67e22; /* アクセントカラー（オレンジ） */
+            --bg-color: #faf8f5;      /* 背景色（温かみのある白） */
+            --text-color: #4a4a4a;    /* 文字色（ダークグレー） */
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'Zen Maru Gothic', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.8;
+        }
+
+        a {
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* --- ボタン --- */
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+            opacity: 0.9;
+        }
+
+        /* --- ヒーローセクション --- */
+        .hero {
+            /* ↓ここに top.jpg を指定しました */
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('top.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            position: relative;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2em;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+
+        /* --- イントロダクション --- */
+        .intro {
+            padding: 80px 0;
+            text-align: center;
+        }
+        .intro h2 {
+            font-size: 2rem;
+            margin-bottom: 40px;
+            color: var(--primary-color);
+        }
+        .intro-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        .cat-card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+        
+        /* 写真のスタイル */
+        .cat-photo {
+            width: 150px; 
+            height: 150px; 
+            border-radius: 50%; 
+            object-fit: cover; 
+            margin-bottom: 15px;
+            border: 3px solid var(--primary-color); /* 少し枠線をつけました */
+        }
+
+        /* --- おすすめ動画 --- */
+        .videos {
+            background-color: var(--white);
+            padding: 80px 0;
+        }
+        .videos h2 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 50px;
+            color: var(--primary-color);
+        }
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+        .video-item iframe {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            border-radius: 10px;
+        }
+        .video-text {
+            margin-top: 15px;
+        }
+        .video-text h3 {
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        /* --- 魅力 --- */
+        .features {
+            padding: 80px 0;
+            text-align: center;
+            background-color: #fdf6ec; /* 薄いオレンジ */
+        }
+        .features h2 {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: var(--primary-color);
+        }
+        .features ul {
+            display: inline-block;
+            text-align: left;
+        }
+        .features li {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            position: relative;
+            padding-left: 30px;
+        }
+        .features li::before {
+            content: "🐾";
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+        }
+
+        /* --- フッター --- */
+        .footer {
+            background-color: #333;
+            color: var(--white);
+            padding: 60px 0;
+            text-align: center;
+        }
+        .footer p {
+            margin-bottom: 30px;
+        }
+        .footer .btn {
+            background-color: var(--white);
+            color: var(--primary-color);
+        }
+        .copyright {
+            margin-top: 50px;
+            font-size: 0.8rem;
+            color: #888;
+        }
+
+        /* --- スマホ向け調整 --- */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+            .intro h2, .videos h2, .features h2 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="hero">
+        <div class="container hero-content">
+            <h1>重みは、愛の大きさ。</h1>
+            <p>10kgの巨体と過ごす、規格外の幸せライフ。<br>
+            迷い込んできた3匹の保護猫たちとの日々。</p>
+            <a href="https://www.youtube.com/@10kgcat" target="_blank" class="btn">今すぐ10kgの愛を体験する ▶</a>
+        </div>
+    </header>
+
+    <section class="intro">
+        <div class="container">
+            <h2>規格外のボディ、規格外の可愛さ。</h2>
+            <p>我が家に迷い込んできた3匹の保護猫たち。<br>
+            特別な事件は起きないけれど、重くて温かい「猫がいる幸せ」をお届けします。</p>
+            
+            <div class="intro-grid">
+                <div class="cat-card">
+                    <img src="so.jpg" alt="ソラ" class="cat-photo">
+                    <h3>ソラ (The Giant)</h3>
+                    <p>体重10kg。抱っこは筋トレレベル。<br>そのずっしりとした重みが安心感の証。</p>
+                </div>
+                <div class="cat-card">
+                    <img src="ku.jpg" alt="クロ" class="cat-photo">
+                    <h3>クロ (Black Cat)</h3>
+                    <p>クールに見えて実は甘えん坊？<br>黒猫ならではの魅力がいっぱい。</p>
+                </div>
+                <div class="cat-card">
+                    <img src="u.jpg" alt="ウニ" class="cat-photo">
+                    <h3>ウニ (Orange Tabby)</h3>
+                    <p>珍しい茶トラ女子<br>3匹の凸凹な関係性が笑いを誘います。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="videos">
+        <div class="container">
+            <h2>まずはこの動画で、<br>重さを感じてください。</h2>
+            <div class="video-grid">
+                <div class="video-item">
+                    <iframe src="https://www.youtube.com/embed/VXTA-zHypXA" title="10キロの猫のうた" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <div class="video-text">
+                        <h3>🎵 10キロの猫のうた</h3>
+                        <p>「にゃんて素晴らしい猫生だ」と思わず口ずさみたくなる、チャンネルの代表作。</p>
+                    </div>
+                </div>
+                <div class="video-item">
+                    <iframe src="https://www.youtube.com/embed/NivjpX1KmgY" title="猫の爪切り大嫌い" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <div class="video-text">
+                        <h3>✂️ 猫の爪切り大嫌い</h3>
+                        <p>10kgあっても爪切りは怖い！ミノムシのように包まれて抵抗する姿に共感必至。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="container">
+            <h2>こんな人におすすめ</h2>
+            <ul>
+                <li>猫が好きでたまらない人</li>
+                <li>「デカ猫」のモフモフ感に埋もれたい人</li>
+                <li>保護猫たちの幸せな姿を見て癒やされたい人</li>
+                <li>日々の疲れを、笑いと猫で吹き飛ばしたい人</li>
+            </ul>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <h2>毎日更新中！</h2>
+            <p>ソラ、クロ、ウニの成長（と増量？）を見守ってください。<br>
+            あなたのチャンネル登録が、3匹の明日のおやつになります。</p>
+            <a href="https://www.youtube.com/@10kgcat" target="_blank" class="btn">YouTubeチャンネルを登録する</a>
+            <p class="copyright">© 10kg Cat Channel Promotion</p>
+        </div>
+    </footer>
+
+</body>
+</html>
